@@ -2,11 +2,90 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppCadastradorDeEventos.Views.EventoCadastrado"
-             Title="EventoCadastrado">
+             Title="Evento Cadastrado"
+             BackgroundColor="{StaticResource BackgroundLight}">
+    
+    
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Text="Evento Cadastrado"
+            TextColor="{StaticResource Text}"
+            FontSize="40"
+            FontAttributes="Bold"
+            Padding="10"
+            HorizontalTextAlignment="Center" />
+        <!-- Título -->
+
+        <Border BackgroundColor="{StaticResource Background}"
+                Margin="10">
+            
+            <VerticalStackLayout>
+                <Grid RowDefinitions="auto, auto, auto, auto, auto, auto"
+                      ColumnDefinitions="*"
+                      RowSpacing="20">
+
+                    <Border Grid.Row="0" Grid.Column="0"
+                            Margin="15"
+                            Padding="5"
+                            BackgroundColor="{StaticResource BackgroundLight}">
+                        <Label HorizontalTextAlignment="Center"
+                               Text="Seu evento foi cadastrado com sucesso!"
+                               TextColor="{StaticResource Text}"/>
+                    </Border>
+                    <!-- Mensagem -->
+
+                    <Border Grid.Row="1" Grid.Column="0"
+                            Margin="15"
+                            Padding="5"
+                            BackgroundColor="{StaticResource BackgroundLight}">
+                        <Label HorizontalTextAlignment="Center"
+                               Text="{Binding NomeEvento}"
+                               TextColor="{StaticResource Text}"/>
+                    </Border>
+                    <!-- Nome -->
+
+                    <Border Grid.Row="2" Grid.Column="0"
+                            Margin="15"
+                            Padding="5"
+                            BackgroundColor="{StaticResource BackgroundLight}">
+                        <Label HorizontalTextAlignment="Center"
+                               Text="{Binding LocalEvento}"
+                               TextColor="{StaticResource Text}"/>
+                    </Border>
+                    <!-- Local -->
+
+                    <Border Grid.Row="3" Grid.Column="0"
+                            Margin="15"
+                            Padding="5"
+                            BackgroundColor="{StaticResource BackgroundLight}">
+                        <Label HorizontalTextAlignment="Center"
+                               Text="{Binding DuracaoDias, StringFormat='Duração: {0} dias'}"
+                               TextColor="{StaticResource Text}"/>
+                    </Border>
+                    <!-- Duração -->
+
+                    <Border Grid.Row="4" Grid.Column="0"
+                            Margin="15"
+                            Padding="5"
+                            BackgroundColor="{StaticResource BackgroundLight}">
+                        <Label HorizontalTextAlignment="Center"
+                               Text="{Binding CustoTotal, StringFormat='Total: R$ {0:F2}'}"
+                               TextColor="{StaticResource Text}"/>
+                    </Border>
+                    <!-- Total a pagar -->
+
+                    <Button Grid.Row="5" Grid.Column="0"
+                            Text="Voltar"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="{StaticResource Text}"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            Margin="15"
+                            Clicked="VoltarPagina"/>
+                    <!-- Botão para voltar página -->
+                </Grid>
+            </VerticalStackLayout>
+            
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

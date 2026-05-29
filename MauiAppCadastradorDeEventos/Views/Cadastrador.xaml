@@ -2,11 +2,131 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppCadastradorDeEventos.Views.Cadastrador"
-             Title="Cadastrador">
+             Title="Cadastrador"
+             BackgroundColor="{StaticResource Background}">
+
+    
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+
+        <Label Text="Cadastrador de Eventos"
+               TextColor="{StaticResource TextLight}"
+               FontSize="40"
+               FontAttributes="Bold"
+               Padding="10"
+               HorizontalTextAlignment="Center"/> 
+               <!-- Título -->
+
+        <Border BackgroundColor="{StaticResource BackgroundLight}"
+                Margin="10">
+
+            <VerticalStackLayout Padding="10" >
+                <Grid RowDefinitions="auto, auto, auto, auto, auto, auto, auto"
+                      ColumnDefinitions="170, *"
+                      RowSpacing="20"
+                      ColumnSpacing="10">
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                           Text="Nome do Evento:"
+                           TextColor="{StaticResource Text}"/>
+
+                    <Entry Grid.Row="0" Grid.Column="1"
+                           Visual="Default"
+                           x:Name="NomeEvento"
+                           Placeholder="Ex: Show do Milhão"
+                           BackgroundColor="{StaticResource Primary}"
+                           TextColor="{StaticResource Text}"/>
+                    <!-- Nome do evento -->
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                           Text="Local do evento: "
+                           TextColor="{StaticResource Text}"/>
+
+                    <Entry Grid.Row="1" Grid.Column="1"
+                           x:Name="LocalEvento"
+                           Placeholder="Ex: Ginásio Municipal"
+                           BackgroundColor="{StaticResource Primary}"
+                           TextColor="{StaticResource Text}"/>
+                    <!-- Local do evento -->
+
+                    <Label Grid.Row="2" Grid.Column="0" 
+                           Text="Número de participantes: "
+                           TextColor="{StaticResource Text}"/>
+
+                    <HorizontalStackLayout Grid.Row="2" Grid.Column="1"
+                                           Spacing="10">
+
+                        <Stepper x:Name="stp_Participantes"
+                                 BackgroundColor="{StaticResource Primary}"
+                                 Minimum="1"
+                                 Maximum="1000"
+                                 Increment="1"
+                                 Value="1"/>
+
+                        <Label Text="{Binding Source={x:Reference stp_Participantes}, Path=Value}"
+                               VerticalOptions="Center"
+                               TextColor="{StaticResource Text}"/>
+                    </HorizontalStackLayout>
+                    <!-- Número de participantes -->
+
+                    <Label Grid.Row="3" Grid.Column="0"
+                           Text="Valor por participante: "
+                           TextColor="{StaticResource Text}"/>
+
+                    <HorizontalStackLayout Grid.Row="3" Grid.Column="1"
+                                           Spacing="10">
+                        
+                        <Stepper x:Name="stp_ValorParticipante"
+                                 BackgroundColor="{StaticResource Primary}"
+                                 Minimum="1"
+                                 Maximum="10000"
+                                 Increment="5"
+                                 Value="50"/>
+
+                        <Label Text="{Binding Source={x:Reference stp_ValorParticipante}, Path=Value,
+                                     StringFormat='R$ {0:F2}'
+}"
+                               VerticalOptions="Center"
+                               TextColor="{StaticResource Text}"/> 
+                               <!-- Esse StringFormat formata o valor como moeda -->
+
+                    </HorizontalStackLayout>
+                    <!-- Valor por participante -->
+
+                    <Label Grid.Row="4" Grid.Column="0"
+                           Text="Data de início do evento:"
+                           TextColor="{StaticResource Text}"/>
+
+                    <DatePicker Grid.Row="4" Grid.Column="1"
+                                x:Name="dtpk_DataInicio"
+                                BackgroundColor="{StaticResource Primary}"
+                                TextColor="{StaticResource Text}"/>
+                    <!-- Data de início -->
+
+                    <Label Grid.Row="5" Grid.Column="0"
+                           Text="Data de término do evento:"
+                           TextColor="{StaticResource Text}"/>
+
+                    <DatePicker Grid.Row="5" Grid.Column="1"
+                                x:Name="dtpk_DataFim"
+                                BackgroundColor="{StaticResource Primary}"
+                                TextColor="{StaticResource Text}"/>
+                    <!-- Data de Término do evento -->
+
+
+                    <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                            Text="Cadastrar Evento"
+                            BackgroundColor="{StaticResource Secondary}"
+                            TextColor="{StaticResource TextLight}"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            Clicked="CadastrarEvento"/>
+                    <!-- Botão para cadastrar o evento -->
+                </Grid>
+            </VerticalStackLayout>
+
+        </Border>
+
     </VerticalStackLayout>
+
+
 </ContentPage>

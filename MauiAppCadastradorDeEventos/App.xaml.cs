@@ -9,9 +9,14 @@ namespace MauiAppCadastradorDeEventos
             InitializeComponent();
         }
 
-        protected override Window CreateWindow(IActivationState? activationState)
+        protected override Window CreateWindow(IActivationState? activationState) // cria a janela principal do aplicativo
         {
-            return new Window(new AppShell());
+            var window = new Window(new AppShell()); // cria uma nova janela e define como principal janela do aplicativo
+
+            window.Width = 400;
+            window.Height = 800;
+
+            return window; // retorna a janela criada
         }
     }
 }
